@@ -3,12 +3,15 @@ Latest `core-v1` and `peripheral` contract deployed addresses, ABIs and interfac
 
 ## Sepolia
 
-### v0.7.1-alpha
+### v0.11.0
 
 | Name                            | Address                                                                                      | Interface |
 |---------------------------------|--------------------------------------------------------------------------------------------| ------------- |
-| Ammalgam Factory               | [`0xda528b5e8B9F2cA274bEC5837D32674E184833A2`](https://sepolia.etherscan.io/address/0xda528b5e8B9F2cA274bEC5837D32674E184833A2) | [IAmmalgamFactory](./interfaces/factories/IAmmalgamFactory.sol)
-| Ammalgam Peripheral            | [`0x737Da85F70db0d93b9d2C189AA7fba0841b8463B`](https://sepolia.etherscan.io/address/0x737Da85F70db0d93b9d2C189AA7fba0841b8463B) | [IPeripheral](./interfaces/IPeripheral.sol)
+| Ammalgam Factory               | [`0x5a6A9C26587F80eF235903e6de814cB35CF26307`](https://sepolia.etherscan.io/address/0x5a6A9C26587F80eF235903e6de814cB35CF26307) | [IAmmalgamFactory](./interfaces/factories/IAmmalgamFactory.sol)
+| Ammalgam Peripheral            | [`0xAfFC6c525660480dA9656165490aA9c27E5ea9B3`](https://sepolia.etherscan.io/address/0xAfFC6c525660480dA9656165490aA9c27E5ea9B3) | [IPeripheral](./interfaces/IPeripheral.sol)
+| Ammalgam Pair Creator          | [`0x4194bF08fb7Ff37e96715492a5a713A44Ada272E`](https://sepolia.etherscan.io/address/0x4194bF08fb7Ff37e96715492a5a713A44Ada272E) | —
+| Ammalgam Swap Helper           | [`0xd84A2e3D5f68e299823b44557102bF2BfdC16185`](https://sepolia.etherscan.io/address/0xd84A2e3D5f68e299823b44557102bF2BfdC16185) | [IPeripheralSwapHelper](./interfaces/IPeripheralSwapHelper.sol)
+| Ammalgam TWAP State            | [`0xf0E5Ec52B0F03A9ef5B1F12F1789Df3A1818C5B7`](https://sepolia.etherscan.io/address/0xf0E5Ec52B0F03A9ef5B1F12F1789Df3A1818C5B7) | [ISaturationAndGeometricTWAPState](./interfaces/ISaturationAndGeometricTWAPState.sol)
 
 This repo contains the `interfaces` for the `core-v1` contracts of the Ammalgam Protocol. We will be exposing more once we have completed audits and are closer to launching.
 
