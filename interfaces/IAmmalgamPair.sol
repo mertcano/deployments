@@ -24,6 +24,45 @@ interface IAmmalgamPair is ITokenController, ITransferValidator {
     );
 
     /**
+     * @dev Emitted when a borrower position is liquidated.
+     * @dev `seized*` assets leave the borrower's position, `repay*Assets` are the
+     * nominal repayment, and `actualRepaid*Assets` is what was actually pulled
+     * after applying the liquidation penalty. The distinction matters for
+     * accounting: `repay*` alone overstates the loss to the pool.
+     * @param borrower The liquidated borrower
+     * @param to The receiver of the seized assets
+     * @param seizedLAssets Liquidity shares seized from the borrower
+     * @param seizedXAssets Asset X seized from the borrower
+     * @param seizedYAssets Asset Y seized from the borrower
+     * @param repayXAssets Nominal asset X repayment
+     * @param repayYAssets Nominal asset Y repayment
+     * @param actualRepaidXAssets Asset X actually pulled from the liquidator
+     * @param actualRepaidYAssets Asset Y actually pulled from the liquidator
+     * @param liquidationType The liquidation path taken
+     */
+    event Liquidate(
+        address indexed borrower,
+        address indexed to,
+        uint256 seizedLAssets,
+        uint256 seizedXAssets,
+        uint256 seizedYAssets,
+        uint256 repayXAssets,
+        uint256 repayYAssets,
+        uint256 actualRepaidXAssets,
+        uint256 actualRepaidYAssets,
+        uint256 liquidationType
+    );
+
+    /**
+     * @dev Emitted when bad debt is written off against a borrower's position.
+     * @param borrower The borrower whose bad debt was burned
+     * @param tokenType The amalgam token type the bad debt was booked against
+     * @param badDebtAssets The amount of bad debt written off
+     * @param badDebtShares The shares burned to cover the bad debt
+     */
+    event BurnBadDebt(address indexed borrower, uint256 indexed tokenType, uint256 badDebtAssets, uint256 badDebtShares);
+
+    /**
      * @notice Mints tokens and assigns them to `to` address.
      * @dev Calculates the amount of tokens to mint based on reserves and balances. Requires liquidity > 0.
      * Emits a #Mint event.

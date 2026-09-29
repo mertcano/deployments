@@ -1,0 +1,20 @@
+# Remappings required to compile the interfaces in this repository.
+#
+# The `.sol` files are published as a copy-paste artifact, so they carry two
+# kinds of import that only resolve under an explicit remapping:
+#
+#   1. Self-references (`import ... from 'interfaces/tokens/IAmmalgamERC20.sol'`).
+#      These make the tree importable as a unit from the repository root, which
+#      is where a Foundry/ Hardhat project expects to find it.
+#   2. OpenZeppelin, which is a normal node_modules dependency.
+#
+# Without this file both import kinds fail with "File not found", so a consumer
+# who copies these interfaces into their own project cannot compile them and
+# will most likely fall back to the ABIs (which are correct) or to guessing.
+#
+# Note: `contracts/tokens/ERC20Base.sol` is referenced by
+# `interfaces/tokens/ITokenFactory.sol`. It lives in the `core-v1` repository,
+# not here, so it cannot be remapped to a path in this repository.
+
+@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/
+interfaces/=interfaces/

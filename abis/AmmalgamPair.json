@@ -569,5 +569,165 @@
     "type": "error",
     "name": "TickOutOfBounds",
     "inputs": []
+  },
+  {
+    "type": "event",
+    "name": "InterestAccrued",
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "reserveXAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "reserveYAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint112",
+        "name": "depositXAssets",
+        "type": "uint112"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint112",
+        "name": "depositYAssets",
+        "type": "uint112"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint112",
+        "name": "borrowLAssets",
+        "type": "uint112"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint112",
+        "name": "borrowXAssets",
+        "type": "uint112"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint112",
+        "name": "borrowYAssets",
+        "type": "uint112"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UpdateLendingTick",
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "int16",
+        "name": "lendingStateTick",
+        "type": "int16"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Liquidate",
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "seizedLAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "seizedXAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "seizedYAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "repayXAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "repayYAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "actualRepaidXAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "actualRepaidYAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "liquidationType",
+        "type": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "BurnBadDebt",
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenType",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "badDebtAssets",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "badDebtShares",
+        "type": "uint256"
+      }
+    ],
+    "anonymous": false
   }
 ]

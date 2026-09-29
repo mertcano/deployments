@@ -42,7 +42,15 @@ interface ITokenController {
 
     /**
      * @dev Emitted when Interest gets accrued
-     * @param depositLAssets The amount of total `DEPOSIT_L` assets in the pool after interest accrual
+     * @dev This signature must stay byte-identical to the deployed contract's
+     * `InterestAccrued`, because the log's `topic0` is the keccak256 of the
+     * signature. Any change to the parameter list or to a parameter's type
+     * changes `topic0`, and every client that filters on the old signature
+     * silently stops receiving the event.
+     * @dev Note the asymmetry: reserves are `uint256`, per-token totals are
+     * `uint112`.
+     * @param reserveXAssets The updated reserve for token X
+     * @param reserveYAssets The updated reserve for token Y
      * @param depositXAssets The amount of total `DEPOSIT_X` assets in the pool after interest accrual
      * @param depositYAssets The amount of total `DEPOSIT_Y` assets in the pool after interest accrual
      * @param borrowLAssets The amount of total `BORROW_L` assets in the pool after interest accrual
@@ -50,13 +58,25 @@ interface ITokenController {
      * @param borrowYAssets The amount of total `BORROW_Y` assets in the pool after interest accrual
      */
     event InterestAccrued(
-        uint128 depositLAssets,
-        uint128 depositXAssets,
-        uint128 depositYAssets,
-        uint128 borrowLAssets,
-        uint128 borrowXAssets,
-        uint128 borrowYAssets
+        uint256 reserveXAssets,
+        uint256 reserveYAssets,
+        uint112 depositXAssets,
+        uint112 depositYAssets,
+        uint112 borrowLAssets,
+        uint112 borrowXAssets,
+        uint112 borrowYAssets
     );
+
+    /**
+     * @dev Emitted when a borrower's bad debt is written off.
+     * @dev Declared on the pair as well; kept here so that a client holding only
+     * `ITokenController` can still decode the event.
+     * @param borrower The borrower whose bad debt was burned
+     * @param tokenType The amalgam token type the bad debt was booked against
+     * @param badDebtAssets The amount of bad debt written off
+     * @param badDebtShares The shares burned to cover the bad debt
+     */
+    event BurnBadDebt(address indexed borrower, uint256 indexed tokenType, uint256 badDebtAssets, uint256 badDebtShares);
 
     /**
      * @notice Get the underlying tokens for the AmmalgamERC20Controller.

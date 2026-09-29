@@ -1,0 +1,9 @@
+{
+  "name": "ammalgam-deployments",
+  "version": "0.11.0",
+  "private": true,
+  "description": "Deployed addresses, ABIs and Solidity interfaces for the Ammalgam Protocol.",
+  "scripts": {
+    "verify:abi": "node verify_abi_consistency.cjs"
+  }
+}
