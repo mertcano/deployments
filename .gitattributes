@@ -1,0 +1,8 @@
+# Normalize line endings in the repository to LF.
+#
+# Rationale: without this file Git applies its platform default
+# (core.autocrlf=true on Windows), rewriting LF to CRLF on checkout. That turns
+# every diff in this repository into a whole-file rewrite and makes the
+# interface files — whose whitespace is not meaningful but whose *contents* are
+# ABI-critical — noisy to review.
+* text=auto eol=lf
